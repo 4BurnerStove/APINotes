@@ -4,7 +4,6 @@ const AppError = require('../utils/AppError')
 
 const sqliteConnection = require("../database/sqlite")
 const { req, res } = require('express')
-const { use } = require('express/lib/router')
 
 class UsersController {
   async create(req, res) {
@@ -13,7 +12,11 @@ class UsersController {
     const database = await sqliteConnection()
     
     const checkUserExist = await database.get('SELECT * FROM users WHERE email = (?)', [email])
-    // (?) substitui o conteudo que está na variavel  
+    // (?) substitui o conteudo que está na variavel 
+    
+    if(!name){
+      throw new AppError("O nome é obrigatorio!")
+    }
 
     if(checkUserExist){
       throw new AppError('Este e-mail já esta em uso.')
