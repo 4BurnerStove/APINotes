@@ -8,9 +8,8 @@ const userRoutes = Router()
 
 userRoutes.post('/', usersController.create)
 userRoutes.put('/:id', usersController.update)
+
 module.exports = userRoutes
-
-
 
 // Exemplo de middleware
 // function myMiddleware(req, res, next) {

@@ -3,7 +3,6 @@ const { hash, compare } = require('bcryptjs')
 const AppError = require('../utils/AppError')
 
 const sqliteConnection = require("../database/sqlite")
-const { req, res } = require('express')
 
 class UsersController {
   async create(req, res) {
