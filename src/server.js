@@ -13,13 +13,13 @@ const routes = require('./routes')
 
 const app = express()
 migrationsRun()
+app.use(cors())
 
 app.use(express.json())
 
 app.use("/files", express.static(uploadConfig.UPLOADS_FOLDER))
 
 app.use(routes)
-app.use(cors())
 
 app.use((error, req, res, next) => {
   if (error instanceof AppError) {
